@@ -6,7 +6,7 @@
 
 @font-face {
   font-family: "circular";
-  src: url(circular-spotify-text-font/CircularSpotifyText-Medium.otf)
+  src: url(circular-spotify-text-font/CircularSpotifyText-Book.otf)
     format("opentype");
 }
 
@@ -57,7 +57,7 @@ body {
   border-radius: 7px;
   padding: 11px;
   margin: 5px;
-  min-height: 72vh;
+  min-height: 75vh;
   position: relative;
 }
 
@@ -98,6 +98,7 @@ body {
   background-color: #121212;
   border-radius: 7px;
   margin: 10px 8px 10px 0px;
+  position: relative;
 }
 
 .header {
@@ -106,10 +107,39 @@ body {
   background-color: #101010;
   border-radius: 7px 7px 0px 0px;
   line-height: 3;
+  flex-shrink: 0;
 }
 
 .header > * {
   padding: 5px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  box-sizing: content-box;
+  position: relative;
+}
+
+.content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+.content:hover::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .nav i {
@@ -161,19 +191,20 @@ body {
   padding: 20px;
 }
 
-.popularArtists h1 {
+.heading {
   font-size: 22px;
   font-weight: 300;
+  width: 205px;
 }
 
-.popularArtists h1:hover {
+.heading:hover {
   color: white;
   text-decoration: underline;
   cursor: pointer;
 }
 
-.popularArtists .card {
-  width: 170px;
+.card {
+  min-width: 170px;
   padding: 10px;
   border-radius: 7px;
   margin: 15px 10px 15px 0px;
@@ -190,7 +221,20 @@ body {
   font-family: "circular";
   display: flex;
   gap: 10px;
-  flex-wrap: wrap;
+  overflow-x: auto; /* Enables horizontal scrolling */
+  overflow-y: hidden; /* Prevents vertical scroll */
+  white-space: nowrap; /* Prevents line breaks */
+  flex-wrap: nowrap; /* Prevents wrapping to new lines */
+  padding-bottom: 10px; /* Optional: space below to avoid scrollbar overlap */
+  scroll-behavior: smooth;
+}
+
+.cardContainer::-webkit-scrollbar {
+  height: 6px;
+}
+.cardContainer::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 10px;
 }
 
 .card img {
@@ -205,23 +249,45 @@ body {
   right: 10px;
   top: 150px;
   opacity: 0;
-  /* transform: translateX(-50%); */
-  opacity: 0;
   transition: opacity 0.3s ease;
   transition: all 0.25s ease-in;
 }
 
 .card:hover .play-icon {
   opacity: 1;
-  top: 103px;
+  top: 130px;
 }
 
 .card h3 {
+  margin-top: 15px;
   font-size: 1em;
   font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card h3:hover {
+  text-decoration: underline;
 }
 
 .card p {
   font-size: 0.85em;
   font-weight: 200;
+  color: #898888;
+  max-width: 200px;
+  margin-top: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
+.card p:hover {
+  text-decoration: underline;
+}
+
+.card-rect img {
+  border-radius: 7px;
+}
+
+.mainPadding {
+  padding: 20px;
+} 

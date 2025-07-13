@@ -18,6 +18,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -62,7 +63,7 @@ body {
   border-radius: 7px;
   padding: 11px;
   margin: 5px;
-  min-height: 75vh;
+  min-height: 78vh;
   position: relative;
 }
 
@@ -85,7 +86,7 @@ body {
 
 .songList {
   font-family: "circular-light";
-  height: 62vh;
+  height: 52vh;
   overflow-y: auto;
   overflow-x: hidden;
   scroll-behavior: smooth;
@@ -131,6 +132,10 @@ body {
   flex-shrink: 0;
 }
 
+.songList ul li img:hover {
+  transform: scale(1.25);
+}
+
 .songList ul li .info {
   display: flex;
   flex-direction: column;
@@ -154,6 +159,10 @@ body {
   text-overflow: ellipsis;
 }
 
+.songList ul li .info > div:hover {
+  text-decoration: underline;
+}
+
 .songList ul li img:last-child {
   width: 20px;
   height: 20px;
@@ -161,16 +170,17 @@ body {
   flex-shrink: 0;
 }
 
-
 .footer {
   font-size: 10px;
   display: flex;
   position: absolute;
-  bottom: 0;
+  justify-content: space-between;
+  bottom: 30px;
+  width: 200px;
   flex-direction: row;
   gap: 12px;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  /* justify-content: flex-start;*/
 }
 
 .footer a {
@@ -381,25 +391,46 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: #898888;
-  min-height: 8vh;
+  background-color: #676565;
+  min-height: 9vh;
   border-radius: 0 0 7px 7px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 0 20px 0 4px;
   gap: 15px;
 }
 
-.songInfo,
+.track {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 0 20px;
+}
+
+.songInfo {
+  max-width: 30%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .songTime {
-  flex: 1;
+  max-width: 20%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
 }
 
 .songButtons {
-  flex: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 15px;
 }
 
@@ -419,4 +450,26 @@ body {
   box-shadow: 0px 0px 13px -3px rgba(0, 0, 0, 1);
   background: transparent;
   outline: none;
+}
+
+.seekbar {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  width: 99%;
+  background-color: white;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.circle {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  position: absolute;
+  left: 0%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: left 0.5s;
 }

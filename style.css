@@ -290,4 +290,46 @@ body {
 
 .mainPadding {
   padding: 20px;
-} 
+}
+
+.playbar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #0ea109;
+  min-height: 8vh;
+  border-radius: 0 0 7px 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.songInfo,
+.songTime {
+  flex: 1;
+}
+
+.songButtons {
+  flex: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.songButtons svg {
+  background: transparent;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  /* display: block; */
+  vertical-align: middle;
+}
+
+.songButtons svg:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  box-shadow: 0px 0px 13px -3px rgba(0, 0, 0, 1);
+  background: transparent;
+  outline: none;
+}

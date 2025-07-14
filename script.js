@@ -22,7 +22,7 @@ async function getSongs() {
 
 function secondsToMinutes(seconds) {
   if (isNaN(seconds) || seconds < 0) {
-    return "invalid input";
+    return "00:00";
   }
 
   const minutes = Math.floor(seconds / 60);
@@ -59,7 +59,7 @@ async function main() {
                     <div>${song.replaceAll("%20", " ")}</div>
                     <div>harry</div>
                 </div>
-                <img src="playsongbtn.svg" alt="">
+                <img class="libraryPlayIcon" src="playsongbtn.svg" alt="">
       </li>`;
   }
 
@@ -92,7 +92,23 @@ async function main() {
   });
 
   document.querySelector(".seekbar").addEventListener("click", (e) => {
-    console.log(e);
+    // console.log(e.offsetX, e.target.getBoundingClientRect());
+    //update the circle where the mouse is clicked
+    let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
+    document.querySelector(".circle").style.left = percent + "%";
+
+    //update the music current time according where the seekbar is
+    currentSong.currentTime = (currentSong.duration * percent) / 100;
+  });
+
+  //Add event listener for hamburger
+  document.querySelector(".hamburger").addEventListener("click", (e) => {
+    document.querySelector(".left").style.left = 0 + "%";
+  });
+
+  //Add event listener for close
+  document.querySelector(".close").addEventListener("click", (e) => {
+    document.querySelector(".left").style.left = -200 + "%";
   });
 }
 

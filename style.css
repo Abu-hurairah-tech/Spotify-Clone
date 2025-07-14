@@ -45,6 +45,18 @@ body {
   padding: 11px;
 }
 
+.closebtn {
+  position: absolute;
+  right: 20px;
+  display: none;
+  transform-origin: center;
+  cursor: pointer;
+}
+
+.closebtn:hover {
+  transform: scale(1.15);
+}
+
 .invert {
   filter: invert(1);
 }
@@ -208,6 +220,17 @@ body {
   padding: 5px;
 }
 
+.hamburger {
+  display: none;
+  transition: transform 0.2s ease;
+  transform-origin: center;
+  cursor: pointer;
+}
+
+.hamburger:hover {
+  transform: scale(1.15);
+}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -234,6 +257,10 @@ body {
 }
 .content:hover::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.2);
+}
+
+.nav {
+  display: block;
 }
 
 .nav i {
@@ -387,18 +414,26 @@ body {
   padding: 20px;
 }
 
+.playbarContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .playbar {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 66vw;
   background-color: #676565;
   min-height: 9vh;
-  border-radius: 0 0 7px 7px;
+  border-radius: 7px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px 0 4px;
   gap: 15px;
+  box-shadow: 0px 0px 13px -3px rgba(0, 0, 0, 1);
+  margin: 0px 8px;
 }
 
 .track {
@@ -455,7 +490,7 @@ body {
 .seekbar {
   position: absolute;
   bottom: 0;
-  height: 2px;
+  height: 4px;
   width: 99%;
   background-color: white;
   border-radius: 7px;
@@ -472,4 +507,48 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
   transition: left 0.5s;
+}
+
+@media (max-width: 1200px) {
+  .left {
+    position: absolute;
+    left: -200%;
+    width: 333px;
+    box-shadow: 0px 17px 10px 1px rgba(0, 0, 0, 1);
+    z-index: 1;
+    background-color: black;
+    transition: all 1s;
+  }
+
+  .right {
+    width: 100vw;
+  }
+
+  .playbar {
+    width: 95%;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .closebtn {
+    display: block;
+  }
+
+  .content {
+    height: 89vh;
+  }
+
+  .library {
+    min-height: 85vh;
+  }
+
+  .track {
+    padding: 0;
+  }
 }

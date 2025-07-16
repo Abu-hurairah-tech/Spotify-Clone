@@ -1,122 +1,84 @@
-.playbar {
-  position: absolute;
-  bottom: 0;
-  width: 66vw;
-  background-color: #676565;
-  min-height: 9vh;
+.card {
+  min-width: 170px;
+  padding: 10px;
   border-radius: 7px;
+  margin: 15px 10px 15px 0px;
+  position: relative;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  background-color: #252525;
+}
+
+.cardContainer {
+  font-family: "circular";
   display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 6px 20px;
   gap: 10px;
+  overflow-x: auto; /* Enables horizontal scrolling */
+  overflow-y: hidden; /* Prevents vertical scroll */
+  white-space: nowrap; /* Prevents line breaks */
+  flex-wrap: nowrap; /* Prevents wrapping to new lines */
+  padding-bottom: 10px; /* Optional: space below to avoid scrollbar overlap */
+  scroll-behavior: smooth;
+}
+
+.cardContainer::-webkit-scrollbar {
+  height: 6px;
+}
+.cardContainer::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 10px;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 50%;
+  object-fit: contain;
   box-shadow: 0px 0px 13px -3px rgba(0, 0, 0, 1);
-  margin: 0px 8px;
 }
 
-.seekbar {
+.play-icon {
   position: absolute;
-  bottom: 0;
-  height: 4px;
-  width: 99%;
-  background-color: white;
+  right: 10px;
+  top: 150px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  transition: all 0.25s ease-in;
+}
+
+.card:hover .play-icon {
+  opacity: 1;
+  top: 130px;
+}
+
+.card h3 {
+  margin-top: 15px;
+  font-size: 1em;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card h3:hover {
+  text-decoration: underline;
+}
+
+.card p {
+  font-size: 0.85em;
+  font-weight: 200;
+  color: #898888;
+  max-width: 200px;
+  margin-top: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card p:hover {
+  text-decoration: underline;
+}
+
+.card-rect > img {
   border-radius: 7px;
-  cursor: pointer;
-}
-
-.circle {
-  height: 12px;
-  width: 12px;
-  border-radius: 50%;
-  background-color: red;
-  position: absolute;
-  left: 0%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  transition: left 0.5s;
-}
-
-.track {
-    width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.songButtons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  flex: 1;
-}
-
-.songButtons img{
-  height: 44px;
-  width: 44px;
-}
-
-.volumeIcon {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.volumeIcon img{
-  height: 20px;
-  width: 20px;
-}
-
-#volumeSlider {
-  width: 80px;
-  height: 4px;
-  appearance: none;
-  background: #ccc;
-  border-radius: 2px;
-  outline: none;
-  cursor: pointer;
-}
-
-/* Customize thumb for Chrome/Safari */
-#volumeSlider::-webkit-slider-thumb {
-  appearance: none;
-  width: 10px;
-  height: 10px;
-  background: white;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 0 2px black;
-}
-
-/* Customize thumb for Firefox */
-#volumeSlider::-moz-range-thumb {
-  width: 10px;
-  height: 10px;
-  background: white;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-}
-
-/* Track styling for Firefox */
-#volumeSlider::-moz-range-track {
-  height: 4px;
-  background: #ccc;
-  border-radius: 2px;
-}
-
-.songInfo {
-  max-width: 30%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.songTime {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: right;
-  max-width: 20%;
-  font-size: 14px;
 }
